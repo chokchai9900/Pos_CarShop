@@ -33,7 +33,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.addProductbutton = new System.Windows.Forms.Button();
             this.welcomeBtn = new System.Windows.Forms.Button();
             this.GotoProductTypeBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -41,8 +41,6 @@
             this.time = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.welcome1 = new Pos_CarShop.Welcome();
-            this.productType1 = new Pos_CarShop.productType();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,6 +51,9 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.clearBtn = new System.Windows.Forms.Button();
             this.calProductPrice = new System.Windows.Forms.Button();
+            this.addproduct1 = new Pos_CarShop.UserController.Addproduct();
+            this.welcome1 = new Pos_CarShop.Welcome();
+            this.productType1 = new Pos_CarShop.productType();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -65,7 +66,7 @@
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.addProductbutton);
             this.groupBox1.Controls.Add(this.welcomeBtn);
             this.groupBox1.Controls.Add(this.GotoProductTypeBtn);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -106,15 +107,16 @@
             this.button4.Text = "เช็คสินค้าใน Stock";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // addProductbutton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button3.Location = new System.Drawing.Point(6, 141);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(188, 49);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "เพิ่มสินค้า";
-            this.button3.UseVisualStyleBackColor = true;
+            this.addProductbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.addProductbutton.Location = new System.Drawing.Point(6, 141);
+            this.addProductbutton.Name = "addProductbutton";
+            this.addProductbutton.Size = new System.Drawing.Size(188, 49);
+            this.addProductbutton.TabIndex = 2;
+            this.addProductbutton.Text = "เพิ่มสินค้า";
+            this.addProductbutton.UseVisualStyleBackColor = true;
+            this.addProductbutton.Click += new System.EventHandler(this.addProductbutton_Click);
             // 
             // welcomeBtn
             // 
@@ -181,29 +183,13 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.addproduct1);
             this.panel1.Controls.Add(this.welcome1);
             this.panel1.Controls.Add(this.productType1);
             this.panel1.Location = new System.Drawing.Point(218, 25);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(738, 530);
             this.panel1.TabIndex = 15;
-            // 
-            // welcome1
-            // 
-            this.welcome1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.welcome1.Location = new System.Drawing.Point(38, 42);
-            this.welcome1.Name = "welcome1";
-            this.welcome1.Size = new System.Drawing.Size(657, 465);
-            this.welcome1.TabIndex = 1;
-            // 
-            // productType1
-            // 
-            this.productType1.Location = new System.Drawing.Point(98, 82);
-            this.productType1.Name = "productType1";
-            this.productType1.Size = new System.Drawing.Size(637, 425);
-            this.productType1.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -316,6 +302,34 @@
             this.calProductPrice.Text = "ชำระเงิน";
             this.calProductPrice.UseVisualStyleBackColor = true;
             // 
+            // addproduct1
+            // 
+            this.addproduct1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addproduct1.Location = new System.Drawing.Point(3, 0);
+            this.addproduct1.Name = "addproduct1";
+            this.addproduct1.Size = new System.Drawing.Size(732, 527);
+            this.addproduct1.TabIndex = 2;
+            this.addproduct1.Visible = false;
+            // 
+            // welcome1
+            // 
+            this.welcome1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.welcome1.Location = new System.Drawing.Point(58, 18);
+            this.welcome1.Name = "welcome1";
+            this.welcome1.Size = new System.Drawing.Size(657, 465);
+            this.welcome1.TabIndex = 1;
+            // 
+            // productType1
+            // 
+            this.productType1.Location = new System.Drawing.Point(58, 73);
+            this.productType1.Name = "productType1";
+            this.productType1.Size = new System.Drawing.Size(637, 425);
+            this.productType1.TabIndex = 0;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,7 +364,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addProductbutton;
         private System.Windows.Forms.Button welcomeBtn;
         private System.Windows.Forms.Button GotoProductTypeBtn;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -370,6 +384,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.Button calProductPrice;
+        private UserController.Addproduct addproduct1;
     }
 }
 

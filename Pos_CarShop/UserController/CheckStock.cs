@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pos_CarShop
+namespace Pos_CarShop.UserController
 {
-    public partial class productType : UserControl
+    public partial class CheckStock : UserControl
     {
-        public productType()
+        public CheckStock()
         {
             InitializeComponent();
         }

@@ -15,6 +15,7 @@ namespace Pos_CarShop
         public main()
         {
             InitializeComponent();
+
         }
 
         private void main_Load(object sender, EventArgs e)
@@ -38,14 +39,22 @@ namespace Pos_CarShop
         {
             welcome1.Visible = false;
             productType1.Visible = true;
+            addproduct1.Visible = false;
         }
 
         private void welcomeBtn_Click(object sender, EventArgs e)
         {
             welcome1.Visible = true;
             productType1.Visible = false;
+            addproduct1.Visible = false;
         }
 
-        
+        private void addProductbutton_Click(object sender, EventArgs e)
+        {
+            welcome1.Visible = false;
+            productType1.Visible = false;
+            addproduct1.Visible = true;
+        }
+
     }
 }
