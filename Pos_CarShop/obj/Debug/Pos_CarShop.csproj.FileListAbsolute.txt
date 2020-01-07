@@ -47,7 +47,6 @@ C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\MongoDB.Driver.xml
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\MongoDB.Driver.Core.xml
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\Snappy.NET.xml
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\System.Buffers.xml
-C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.csprojAssemblyReference.cache
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.main.resources
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.UserController.Addproduct.resources
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.productType.resources
@@ -60,3 +59,4 @@ C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.pdb
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\Newtonsoft.Json.dll
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\Newtonsoft.Json.xml
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.UserController.CheckStock.resources
+C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.csprojAssemblyReference.cache

@@ -16,20 +16,18 @@ namespace Pos_CarShop.UserController
 {
     public partial class Addproduct : UserControl
     {
-
+        public readonly IMongoCollection<ProductModel> _GetDatabaseservice;
         public Addproduct()
         {
             InitializeComponent();
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("Shop_db");
+
+            _GetDatabaseservice = database.GetCollection<ProductModel>("product");
         }
 
         private void AddProductBtn_Click(object sender, EventArgs e)
         {
-
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("Shop_db");
-
-            var product = database.GetCollection<ProductModel>("product");
-
             var def = new BsonDocument()
                 .Add("productType", typeProductBox1.Text)
                 .Add("productName", nameProductBox.Text.ToString())
@@ -45,8 +43,8 @@ namespace Pos_CarShop.UserController
             }
             else
             {
-                product.InsertOne(data);
-                var validate = product.Find(it => it.productName == data.productName);
+                _GetDatabaseservice.InsertOne(data);
+                var validate = _GetDatabaseservice.Find(it => it.productName == data.productName);
                 if (validate != null)
                 {
                     MessageBox.Show("เพิ่มข้อมูลสำเร็จ", "สำเร็จ", MessageBoxButtons.OK, MessageBoxIcon.Information);

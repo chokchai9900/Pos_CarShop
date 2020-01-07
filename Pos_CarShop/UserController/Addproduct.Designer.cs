@@ -47,7 +47,10 @@
             // 
             // typeProductBox1
             // 
+            this.typeProductBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeProductBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.typeProductBox1.FormattingEnabled = true;
+            this.typeProductBox1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.typeProductBox1.Items.AddRange(new object[] {
             "ของแต่ง",
             "ระบบไฟ",
@@ -55,7 +58,7 @@
             "อุปกรณซ่อมบำรุง",
             "ชุดขับเคลื่อน",
             "ช่วงล่าง",
-            "ล้อ / ยางรถ "});
+            "ล้อ / ยางรถ"});
             this.typeProductBox1.Location = new System.Drawing.Point(87, 75);
             this.typeProductBox1.Name = "typeProductBox1";
             this.typeProductBox1.Size = new System.Drawing.Size(121, 21);
