@@ -15,6 +15,8 @@ namespace Pos_CarShop
     public partial class main : Form
     {
         public readonly IMongoCollection<ProductModel> _GetDatabaseservice;
+        public readonly IMongoCollection<ProductModel> _GetCartservice;
+        public readonly IMongoCollection<logModel> _GetLogtservice;
         public main()
         {
             InitializeComponent();
@@ -22,16 +24,27 @@ namespace Pos_CarShop
             var database = client.GetDatabase("Shop_db");
 
             _GetDatabaseservice = database.GetCollection<ProductModel>("product");
+            _GetCartservice = database.GetCollection<ProductModel>("cart");
+            _GetLogtservice = database.GetCollection<logModel>("log");
         }
 
         private void main_Load(object sender, EventArgs e)
         {
+            double allPrice = 0;
+
             welcome1.Visible = true;
             addproduct1.Visible = false;
 
-            var cartData = _GetDatabaseservice.Find(it => true).ToList();
+            var cartData = _GetCartservice.Find(it => true).ToList();
 
-            CartGridView.DataSource = cartData;
+            cartGridView.DataSource = cartData;
+
+            foreach (var summary in cartData)
+            {
+                allPrice = allPrice + summary.price;
+            }
+
+            sumCallabel.Text = allPrice.ToString();
 
             timer1.Start();
             time.Text = DateTime.Now.ToLongTimeString();
@@ -309,6 +322,24 @@ namespace Pos_CarShop
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var getlog = _GetCartservice.Find(it => true).ToList();
+
+            var getproductname = getlog
+                .GroupBy(it => it.productName)
+                .Where(it => it.FirstOrDefault() != null)
+                .Select(it => it.Key)
+                .ToList();
+
+            //var rebuild = Builders<logModel>.Update
+            //    .Set(it => it.TradinDate,DateTime.Now)
+            //    .Set(it => it.sumPrice,)
+
+            //_GetCartservice.DeleteManyAsync(it => true);
+
         }
     }
 }

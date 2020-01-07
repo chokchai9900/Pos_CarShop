@@ -49,7 +49,6 @@ C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\Snappy.NET.xml
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\bin\Debug\System.Buffers.xml
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.main.resources
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.UserController.Addproduct.resources
-C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.productType.resources
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.Properties.Resources.resources
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.Welcome.resources
 C:\Users\chokc\source\repos\Pos_CarShop\Pos_CarShop\obj\Debug\Pos_CarShop.csproj.GenerateResource.cache

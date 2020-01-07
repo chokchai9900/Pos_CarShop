@@ -89,7 +89,9 @@
     <Compile Include="main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\logModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\saleProductModel.cs" />
     <Compile Include="UserController\Addproduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -101,12 +103,6 @@
     </Compile>
     <Compile Include="UserController\CheckStock.Designer.cs">
       <DependentUpon>CheckStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserController\productType.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserController\productType.Designer.cs">
-      <DependentUpon>productType.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserController\CheckStock.resx">
       <DependentUpon>CheckStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserController\productType.resx">
-      <DependentUpon>productType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
