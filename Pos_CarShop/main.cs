@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MongoDB.Driver.Linq;
 
 namespace Pos_CarShop
 {
@@ -326,18 +327,31 @@ namespace Pos_CarShop
 
         private void main_FormClosed(object sender, FormClosedEventArgs e)
         {
+            var totalIncome = 0.00;
             var getlog = _GetCartservice.Find(it => true).ToList();
 
             var getproductname = getlog
                 .GroupBy(it => it.productName)
-                .Where(it => it.FirstOrDefault() != null)
-                .Select(it => it.Key)
+                .Select(it => new saleProductModel { Name = it.Key , count = it.Count()})
                 .ToList();
 
-            //var rebuild = Builders<logModel>.Update
-            //    .Set(it => it.TradinDate,DateTime.Now)
-            //    .Set(it => it.sumPrice,)
+            foreach (var item in getproductname)
+            {
+                var data = _GetDatabaseservice.Find(it => it.productName == item.Name).FirstOrDefault();
+                
+                totalIncome += (data.price * item.count);
+            }
 
+            logModel def = new logModel
+            {
+                TradinDate = DateTime.Now,
+                sumPrice = totalIncome,
+                saleProducts = getproductname
+            };
+
+            _GetLogtservice.InsertOne(def);
+
+            var zx = 0;
             //_GetCartservice.DeleteManyAsync(it => true);
 
         }

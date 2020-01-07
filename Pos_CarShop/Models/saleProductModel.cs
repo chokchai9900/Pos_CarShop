@@ -8,6 +8,7 @@ namespace Pos_CarShop.Models
 {
     public class saleProductModel
     {
-        public string productName { get; set; }
+        public string Name { get; set; }
+        public int count { get; set; }
     }
 }
