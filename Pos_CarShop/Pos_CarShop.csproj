@@ -89,6 +89,7 @@
     <Compile Include="main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\cartModel.cs" />
     <Compile Include="Models\logModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\saleProductModel.cs" />
@@ -133,6 +134,9 @@
     <EmbeddedResource Include="UserController\Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

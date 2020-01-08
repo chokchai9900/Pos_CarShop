@@ -16,7 +16,7 @@ namespace Pos_CarShop
     public partial class main : Form
     {
         public readonly IMongoCollection<ProductModel> _GetDatabaseservice;
-        public readonly IMongoCollection<ProductModel> _GetCartservice;
+        public readonly IMongoCollection<cartModel> _GetCartservice;
         public readonly IMongoCollection<logModel> _GetLogtservice;
         public main()
         {
@@ -25,9 +25,10 @@ namespace Pos_CarShop
             var database = client.GetDatabase("Shop_db");
 
             _GetDatabaseservice = database.GetCollection<ProductModel>("product");
-            _GetCartservice = database.GetCollection<ProductModel>("cart");
+            _GetCartservice = database.GetCollection<cartModel>("cart");
             _GetLogtservice = database.GetCollection<logModel>("log");
         }
+
 
         private void main_Load(object sender, EventArgs e)
         {
@@ -73,6 +74,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             sparePartsBox.Visible = true;
             eletroBox.Visible = true;
@@ -101,6 +103,7 @@ namespace Pos_CarShop
             label12.Visible = false;
             SearchBox.Visible = false;
             SearchButton.Visible = false;
+            select_Product.Visible = false;
 
             label5.Visible = false;
             label6.Visible = false;
@@ -129,6 +132,7 @@ namespace Pos_CarShop
             label12.Visible = false;
             SearchBox.Visible = false;
             SearchButton.Visible = false;
+            select_Product.Visible = false;
 
             label5.Visible = false;
             label6.Visible = false;
@@ -162,6 +166,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             dataGridView.DataSource = ds;
@@ -175,6 +180,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             var data = _GetDatabaseservice.Find(it => it.productType.Contains("ของแต่ง")).ToList();
@@ -196,6 +202,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             var data = _GetDatabaseservice.Find(it => it.productType.Contains("ระบบไฟ")).ToList();
@@ -217,6 +224,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             var data = _GetDatabaseservice.Find(it => it.productType.Contains("เครื่องยนต์")).ToList();
@@ -239,6 +247,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             var data = _GetDatabaseservice.Find(it => it.productType.Contains("อุปกรณซ่อมบำรุง")).ToList();
@@ -260,6 +269,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             var data = _GetDatabaseservice.Find(it => it.productType.Contains("ชุดขับเคลื่อน")).ToList();
@@ -281,6 +291,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             var data = _GetDatabaseservice.Find(it => it.productType.Contains("ช่วงล่าง")).ToList();
@@ -302,6 +313,7 @@ namespace Pos_CarShop
             label12.Visible = true;
             SearchBox.Visible = true;
             SearchButton.Visible = true;
+            select_Product.Visible = true;
 
             dataGridView.Visible = true;
             var data = _GetDatabaseservice.Find(it => it.productType.Contains("ล้อ / ยางรถ")).ToList();
@@ -315,14 +327,85 @@ namespace Pos_CarShop
             }
         }
 
-        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void select_Product_Click(object sender, EventArgs e)
         {
+            var data = dataGridView.CurrentRow.Cells["_productName"].Value.ToString();
+            var getdata = _GetDatabaseservice.Find(it => it.productName == data).FirstOrDefault();
 
+            ProductModel defProduct = new ProductModel
+            {
+                Id = getdata.Id,
+                productType = getdata.productType,
+                productName = getdata.productName,
+                brand = getdata.brand,
+                countProduct = getdata.countProduct - 1,
+                price = getdata.price,
+                discription = getdata.discription
+            };
+
+            _GetDatabaseservice.DeleteOne(it => it.productName == data);
+            _GetDatabaseservice.InsertOne(defProduct);
+
+            cartModel defCart = new cartModel
+            {
+                productType = defProduct.productType,
+                productName = defProduct.productName,
+                brand = defProduct.brand,
+                price = defProduct.price,
+                discription = defProduct.discription
+            };
+
+            _GetCartservice.InsertOne(defCart);
+            var cartData = _GetCartservice.Find(it => true).ToList();
+            cartGridView.DataSource = cartData;
+
+            var productData = _GetDatabaseservice.Find(it => it.productType == defProduct.productType).ToList();
+            dataGridView.DataSource = productData;
+
+            double allPrice = 0;
+
+            foreach (var summary in cartData)
+            {
+                allPrice = allPrice + summary.price;
+            }
+
+            sumCallabel.Text = allPrice.ToString();
         }
 
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
-            
+            var data = cartGridView.CurrentRow.Cells["productName"].Value.ToString();
+            var getdata = _GetDatabaseservice.Find(it => it.productName == data).FirstOrDefault();
+
+            ProductModel defProduct = new ProductModel
+            {
+                Id = getdata.Id,
+                productType = getdata.productType,
+                productName = getdata.productName,
+                brand = getdata.brand,
+                countProduct = getdata.countProduct + 1,
+                price = getdata.price,
+                discription = getdata.discription
+            };
+            _GetCartservice.DeleteOne(it => it.productName == data);
+            _GetDatabaseservice.DeleteOne(it => it.productName == data);
+
+            _GetDatabaseservice.InsertOne(defProduct);
+
+            var cartData = _GetCartservice.Find(it => true).ToList();
+            cartGridView.DataSource = cartData;
+
+            var productData = _GetDatabaseservice.Find(it => it.productType == defProduct.productType).ToList();
+            dataGridView.DataSource = productData;
+
+            double allPrice = 0;
+
+            foreach (var summary in cartData)
+            {
+                allPrice = allPrice + summary.price;
+            }
+
+            sumCallabel.Text = allPrice.ToString();
         }
 
         private void main_FormClosed(object sender, FormClosedEventArgs e)
@@ -350,10 +433,54 @@ namespace Pos_CarShop
             };
 
             _GetLogtservice.InsertOne(def);
-
-            var zx = 0;
             //_GetCartservice.DeleteManyAsync(it => true);
 
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            var getlog = _GetCartservice.Find(it => true).ToList();
+
+            var getproductname = getlog
+                .GroupBy(it => it.productName)
+                .Select(it => new saleProductModel { Name = it.Key, count = it.Count() })
+                .ToList();
+
+            foreach (var item in getproductname)
+            {
+                var data = _GetDatabaseservice.Find(it => it.productName == item.Name).FirstOrDefault();
+                ProductModel defProduct = new ProductModel
+                {
+                    Id = data.Id,
+                    productType = data.productType,
+                    productName = data.productName,
+                    brand = data.brand,
+                    countProduct = data.countProduct + item.count,
+                    price = data.price,
+                    discription = data.discription
+                };
+
+                _GetDatabaseservice.DeleteOne(it => it.productName == data.productName);
+
+                _GetDatabaseservice.InsertOne(defProduct);
+            }
+
+            _GetCartservice.DeleteManyAsync(it => true);
+
+            var cartData = _GetCartservice.Find(it => true).ToList();
+            cartGridView.DataSource = cartData;
+
+            var productData = _GetDatabaseservice.Find(it =>true).ToList();
+            dataGridView.DataSource = productData;
+
+            double allPrice = 0;
+
+            foreach (var summary in cartData)
+            {
+                allPrice = allPrice + summary.price;
+            }
+
+            sumCallabel.Text = allPrice.ToString();
         }
     }
 }

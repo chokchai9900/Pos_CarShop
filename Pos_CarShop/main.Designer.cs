@@ -45,6 +45,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.sumCallabel = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cartGridView = new System.Windows.Forms.DataGridView();
+            this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clearBtn = new System.Windows.Forms.Button();
             this.calProductPrice = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,33 +70,27 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tiresWheelsBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.select_Product = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.SearchButton = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bannerPic = new System.Windows.Forms.PictureBox();
             this.deleteItemButton = new System.Windows.Forms.Button();
-            this.cartGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addproduct1 = new Pos_CarShop.UserController.Addproduct();
             this.welcome1 = new Pos_CarShop.Welcome();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cartGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sparePartsBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eletroBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enginsBox)).BeginInit();
@@ -99,7 +101,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cartGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -262,6 +263,69 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "รายการสินค้า";
             // 
+            // cartGridView
+            // 
+            this.cartGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cartGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._id,
+            this.dataGridViewTextBoxColumn2,
+            this.productName,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.cartGridView.Location = new System.Drawing.Point(6, 23);
+            this.cartGridView.Name = "cartGridView";
+            this.cartGridView.Size = new System.Drawing.Size(374, 269);
+            this.cartGridView.TabIndex = 6;
+            // 
+            // _id
+            // 
+            this._id.DataPropertyName = "ID";
+            this._id.HeaderText = "ID สินค้า";
+            this._id.Name = "_id";
+            this._id.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "productType";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ประเภทสินค้า";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // productName
+            // 
+            this.productName.DataPropertyName = "productName";
+            this.productName.HeaderText = "ชื่อสินค้า";
+            this.productName.Name = "productName";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "brand";
+            this.dataGridViewTextBoxColumn4.HeaderText = "ยี่ห้อ";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "countProduct";
+            this.dataGridViewTextBoxColumn5.HeaderText = "จำนวนสินค้าที่มี";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "price";
+            this.dataGridViewTextBoxColumn6.HeaderText = "ราคาสินค้า";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "discription";
+            this.dataGridViewTextBoxColumn7.HeaderText = "รายละเอียดสินค้า";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
             // clearBtn
             // 
             this.clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -271,6 +335,7 @@
             this.clearBtn.TabIndex = 20;
             this.clearBtn.Text = "ยกเลิก";
             this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // calProductPrice
             // 
@@ -438,21 +503,34 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.select_Product);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.SearchButton);
             this.panel1.Controls.Add(this.SearchBox);
             this.panel1.Controls.Add(this.dataGridView);
             this.panel1.Controls.Add(this.addproduct1);
             this.panel1.Controls.Add(this.welcome1);
-            this.panel1.Location = new System.Drawing.Point(216, 185);
+            this.panel1.Location = new System.Drawing.Point(216, 166);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(740, 529);
+            this.panel1.Size = new System.Drawing.Size(740, 548);
             this.panel1.TabIndex = 30;
+            // 
+            // select_Product
+            // 
+            this.select_Product.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.select_Product.Location = new System.Drawing.Point(566, 6);
+            this.select_Product.Name = "select_Product";
+            this.select_Product.Size = new System.Drawing.Size(172, 43);
+            this.select_Product.TabIndex = 6;
+            this.select_Product.Text = "เลือกสินค้า";
+            this.select_Product.UseVisualStyleBackColor = true;
+            this.select_Product.Visible = false;
+            this.select_Product.Click += new System.EventHandler(this.select_Product_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(33, 6);
+            this.label12.Location = new System.Drawing.Point(33, 26);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 5;
@@ -461,7 +539,7 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(315, 1);
+            this.SearchButton.Location = new System.Drawing.Point(315, 23);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
             this.SearchButton.TabIndex = 4;
@@ -472,7 +550,7 @@
             // 
             // SearchBox
             // 
-            this.SearchBox.Location = new System.Drawing.Point(85, 3);
+            this.SearchBox.Location = new System.Drawing.Point(83, 23);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.Size = new System.Drawing.Size(215, 20);
             this.SearchBox.TabIndex = 3;
@@ -480,63 +558,85 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.productType,
-            this.productName,
+            this._productName,
             this.brand,
             this.countProduct,
             this.price,
             this.discription});
-            this.dataGridView.Location = new System.Drawing.Point(2, 29);
+            this.dataGridView.Location = new System.Drawing.Point(3, 55);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(735, 496);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.Visible = false;
-            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "ID สินค้า";
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 72;
             // 
             // productType
             // 
+            this.productType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.productType.DataPropertyName = "productType";
             this.productType.HeaderText = "ประเภทสินค้า";
             this.productType.Name = "productType";
+            this.productType.ReadOnly = true;
+            this.productType.Width = 87;
             // 
-            // productName
+            // _productName
             // 
-            this.productName.DataPropertyName = "productName";
-            this.productName.HeaderText = "ชื่อสินค้า";
-            this.productName.Name = "productName";
+            this._productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this._productName.DataPropertyName = "productName";
+            this._productName.HeaderText = "ชื่อสินค้า";
+            this._productName.Name = "_productName";
+            this._productName.ReadOnly = true;
+            this._productName.Width = 66;
             // 
             // brand
             // 
+            this.brand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.brand.DataPropertyName = "brand";
             this.brand.HeaderText = "ยี่ห้อ";
             this.brand.Name = "brand";
+            this.brand.ReadOnly = true;
+            this.brand.Width = 52;
             // 
             // countProduct
             // 
+            this.countProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.countProduct.DataPropertyName = "countProduct";
             this.countProduct.HeaderText = "จำนวนสินค้าที่มี";
             this.countProduct.Name = "countProduct";
+            this.countProduct.ReadOnly = true;
+            this.countProduct.Width = 84;
             // 
             // price
             // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.price.DataPropertyName = "price";
             this.price.HeaderText = "ราคาสินค้า";
             this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Width = 75;
             // 
             // discription
             // 
+            this.discription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.discription.DataPropertyName = "discription";
             this.discription.HeaderText = "รายละเอียดสินค้า";
             this.discription.Name = "discription";
+            this.discription.ReadOnly = true;
+            this.discription.Width = 103;
             // 
             // bannerPic
             // 
@@ -549,80 +649,18 @@
             // 
             // deleteItemButton
             // 
+            this.deleteItemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteItemButton.Location = new System.Drawing.Point(1267, 506);
             this.deleteItemButton.Name = "deleteItemButton";
             this.deleteItemButton.Size = new System.Drawing.Size(75, 23);
             this.deleteItemButton.TabIndex = 32;
-            this.deleteItemButton.Text = "Delete";
+            this.deleteItemButton.Text = "ลบสินค้า";
             this.deleteItemButton.UseVisualStyleBackColor = true;
             this.deleteItemButton.Click += new System.EventHandler(this.deleteItemButton_Click);
             // 
-            // cartGridView
-            // 
-            this.cartGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cartGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.cartGridView.Location = new System.Drawing.Point(6, 23);
-            this.cartGridView.Name = "cartGridView";
-            this.cartGridView.Size = new System.Drawing.Size(374, 269);
-            this.cartGridView.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID สินค้า";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "productType";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ประเภทสินค้า";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "productName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ชื่อสินค้า";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "brand";
-            this.dataGridViewTextBoxColumn4.HeaderText = "ยี่ห้อ";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "countProduct";
-            this.dataGridViewTextBoxColumn5.HeaderText = "จำนวนสินค้าที่มี";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "price";
-            this.dataGridViewTextBoxColumn6.HeaderText = "ราคาสินค้า";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "discription";
-            this.dataGridViewTextBoxColumn7.HeaderText = "รายละเอียดสินค้า";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Visible = false;
-            // 
             // addproduct1
             // 
-            this.addproduct1.Location = new System.Drawing.Point(-1, -40);
+            this.addproduct1.Location = new System.Drawing.Point(-4, -11);
             this.addproduct1.Name = "addproduct1";
             this.addproduct1.Size = new System.Drawing.Size(741, 496);
             this.addproduct1.TabIndex = 1;
@@ -674,6 +712,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cartGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sparePartsBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eletroBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enginsBox)).EndInit();
@@ -685,7 +724,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cartGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -732,22 +770,23 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.TextBox SearchBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn brand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discription;
         private System.Windows.Forms.Button deleteItemButton;
         private System.Windows.Forms.DataGridView cartGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button select_Product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn brand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discription;
     }
 }
 
