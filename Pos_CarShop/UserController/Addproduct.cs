@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Pos_CarShop.Models;
-using MongoDB.Driver;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
+using Pos_CarShop.Models;
+using System;
+using System.Windows.Forms;
 
 namespace Pos_CarShop.UserController
 {
     public partial class Addproduct : UserControl
     {
         public readonly IMongoCollection<ProductModel> _GetDatabaseservice;
+
         public Addproduct()
         {
             InitializeComponent();
@@ -53,13 +47,12 @@ namespace Pos_CarShop.UserController
                     brandBox.Text = null;
                     productCountBox.Value = 0;
                     priceProductBox.Value = 0;
-                    discriptionBox.Text = null ;
+                    discriptionBox.Text = null;
                 }
                 else
                 {
                     MessageBox.Show("เพิ่มข้อมูลไม่สำเร็จ", "ไม่สำเร็จ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
             }
         }
     }

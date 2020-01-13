@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.SalesummaryM = new System.Windows.Forms.Button();
+            this.SalesummaryDay = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.addProductbutton = new System.Windows.Forms.Button();
             this.welcomeBtn = new System.Windows.Forms.Button();
@@ -82,10 +82,10 @@
             this.countProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bannerPic = new System.Windows.Forms.PictureBox();
-            this.deleteItemButton = new System.Windows.Forms.Button();
             this.addproduct1 = new Pos_CarShop.UserController.Addproduct();
             this.welcome1 = new Pos_CarShop.Welcome();
+            this.bannerPic = new System.Windows.Forms.PictureBox();
+            this.deleteItemButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -105,8 +105,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.SalesummaryM);
+            this.groupBox1.Controls.Add(this.SalesummaryDay);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.addProductbutton);
             this.groupBox1.Controls.Add(this.welcomeBtn);
@@ -119,25 +119,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
             // 
-            // button6
+            // SalesummaryM
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button6.Location = new System.Drawing.Point(6, 306);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(188, 49);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "สรุปการขายรายเดือน";
-            this.button6.UseVisualStyleBackColor = true;
+            this.SalesummaryM.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.SalesummaryM.Location = new System.Drawing.Point(6, 306);
+            this.SalesummaryM.Name = "SalesummaryM";
+            this.SalesummaryM.Size = new System.Drawing.Size(188, 49);
+            this.SalesummaryM.TabIndex = 15;
+            this.SalesummaryM.Text = "สรุปการขายรายเดือน";
+            this.SalesummaryM.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // SalesummaryDay
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button5.Location = new System.Drawing.Point(6, 251);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(188, 49);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "สรุปการขายรายวัน";
-            this.button5.UseVisualStyleBackColor = true;
+            this.SalesummaryDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.SalesummaryDay.Location = new System.Drawing.Point(6, 251);
+            this.SalesummaryDay.Name = "SalesummaryDay";
+            this.SalesummaryDay.Size = new System.Drawing.Size(188, 49);
+            this.SalesummaryDay.TabIndex = 14;
+            this.SalesummaryDay.Text = "สรุปการขายรายวัน";
+            this.SalesummaryDay.UseVisualStyleBackColor = true;
+            this.SalesummaryDay.Click += new System.EventHandler(this.SalesummaryDay_Click);
             // 
             // button4
             // 
@@ -638,6 +639,20 @@
             this.discription.ReadOnly = true;
             this.discription.Width = 103;
             // 
+            // addproduct1
+            // 
+            this.addproduct1.Location = new System.Drawing.Point(-4, -11);
+            this.addproduct1.Name = "addproduct1";
+            this.addproduct1.Size = new System.Drawing.Size(741, 496);
+            this.addproduct1.TabIndex = 1;
+            // 
+            // welcome1
+            // 
+            this.welcome1.Location = new System.Drawing.Point(132, 6);
+            this.welcome1.Name = "welcome1";
+            this.welcome1.Size = new System.Drawing.Size(500, 500);
+            this.welcome1.TabIndex = 0;
+            // 
             // bannerPic
             // 
             this.bannerPic.Image = ((System.Drawing.Image)(resources.GetObject("bannerPic.Image")));
@@ -657,20 +672,6 @@
             this.deleteItemButton.Text = "ลบสินค้า";
             this.deleteItemButton.UseVisualStyleBackColor = true;
             this.deleteItemButton.Click += new System.EventHandler(this.deleteItemButton_Click);
-            // 
-            // addproduct1
-            // 
-            this.addproduct1.Location = new System.Drawing.Point(-4, -11);
-            this.addproduct1.Name = "addproduct1";
-            this.addproduct1.Size = new System.Drawing.Size(741, 496);
-            this.addproduct1.TabIndex = 1;
-            // 
-            // welcome1
-            // 
-            this.welcome1.Location = new System.Drawing.Point(132, 6);
-            this.welcome1.Name = "welcome1";
-            this.welcome1.Size = new System.Drawing.Size(500, 500);
-            this.welcome1.TabIndex = 0;
             // 
             // main
             // 
@@ -732,8 +733,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button SalesummaryDay;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button addProductbutton;
         private System.Windows.Forms.Button welcomeBtn;
@@ -787,6 +787,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn countProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn discription;
+        private System.Windows.Forms.Button SalesummaryM;
     }
 }
 

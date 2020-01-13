@@ -1,15 +1,15 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using OfficeOpenXml;
 using Pos_CarShop.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Windows.Forms;
-using MongoDB.Driver.Linq;
 
 namespace Pos_CarShop
 {
@@ -18,6 +18,7 @@ namespace Pos_CarShop
         public readonly IMongoCollection<ProductModel> _GetDatabaseservice;
         public readonly IMongoCollection<cartModel> _GetCartservice;
         public readonly IMongoCollection<logModel> _GetLogtservice;
+
         public main()
         {
             InitializeComponent();
@@ -29,7 +30,6 @@ namespace Pos_CarShop
             _GetLogtservice = database.GetCollection<logModel>("log");
         }
 
-
         private void main_Load(object sender, EventArgs e)
         {
             double allPrice = 0;
@@ -38,6 +38,13 @@ namespace Pos_CarShop
             addproduct1.Visible = false;
 
             var cartData = _GetCartservice.Find(it => true).ToList();
+
+            string root = @"D:\POS_Log";
+            // If directory does not exist, create it. 
+            if (!Directory.Exists(root))
+            {
+                Directory.CreateDirectory(root);
+            }
 
             cartGridView.DataSource = cartData;
 
@@ -51,7 +58,6 @@ namespace Pos_CarShop
             timer1.Start();
             time.Text = DateTime.Now.ToLongTimeString();
             date.Text = DateTime.Now.ToLongDateString();
-            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -62,7 +68,7 @@ namespace Pos_CarShop
         }
 
         private void GotoProductTypeBtn_Click(object sender, EventArgs e)
-        { 
+        {
             label5.Visible = true;
             label6.Visible = true;
             label7.Visible = true;
@@ -148,9 +154,8 @@ namespace Pos_CarShop
             dataGridView.Visible = false;
 
             bannerPic.Visible = true;
-
-            
         }
+
         private void SearchButton_Click(object sender, EventArgs e)
         {
             string strKeyword = SearchBox.Text;
@@ -236,7 +241,6 @@ namespace Pos_CarShop
             {
                 dataGridView.DataSource = data;
             }
-            
         }
 
         private void fixBox_Click(object sender, EventArgs e)
@@ -415,13 +419,13 @@ namespace Pos_CarShop
 
             var getproductname = getlog
                 .GroupBy(it => it.productName)
-                .Select(it => new saleProductModel { Name = it.Key , count = it.Count()})
+                .Select(it => new saleProductModel { Name = it.Key, count = it.Count() })
                 .ToList();
 
             foreach (var item in getproductname)
             {
                 var data = _GetDatabaseservice.Find(it => it.productName == item.Name).FirstOrDefault();
-                
+
                 totalIncome += (data.price * item.count);
             }
 
@@ -433,8 +437,8 @@ namespace Pos_CarShop
             };
 
             _GetLogtservice.InsertOne(def);
-            //_GetCartservice.DeleteManyAsync(it => true);
 
+            //_GetCartservice.DeleteManyAsync(it => true);
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
@@ -470,7 +474,7 @@ namespace Pos_CarShop
             var cartData = _GetCartservice.Find(it => true).ToList();
             cartGridView.DataSource = cartData;
 
-            var productData = _GetDatabaseservice.Find(it =>true).ToList();
+            var productData = _GetDatabaseservice.Find(it => true).ToList();
             dataGridView.DataSource = productData;
 
             double allPrice = 0;
@@ -481,6 +485,38 @@ namespace Pos_CarShop
             }
 
             sumCallabel.Text = allPrice.ToString();
+        }
+
+        private void SalesummaryDay_Click(object sender, EventArgs e)
+        {
+            string filePath = $@"D:\POS_Log\Report{DateTime.Now.ToString("dd/MM/yyyy")}.xlsx";
+
+            using (var excelPackage = new ExcelPackage())
+            {
+                var worksheet = excelPackage.Workbook.Worksheets.Add($"Sale summary report{DateTime.Now.ToString("dd/MM/yyyy")}");
+
+                worksheet.Cells["A1"].Value = "Sale summary report";
+
+                excelPackage.SaveAs(new FileInfo(filePath));
+            }
+
+
+
+            repoetView RepoetView = new repoetView();
+            RepoetView.Show();
+
+            try
+            {
+                Process.Start(@"D:\POS_Log");
+            }
+            catch (Exception)
+            {
+                Directory.CreateDirectory(@"D:\POS_Log");
+            }
+            finally
+            {
+                Process.Start(@"D:\POS_Log");
+            }
         }
     }
 }

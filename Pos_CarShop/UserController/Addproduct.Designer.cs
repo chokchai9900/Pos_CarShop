@@ -199,7 +199,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeProductBox1);
             this.Name = "Addproduct";
-            this.Size = new System.Drawing.Size(921, 540);
+            this.Size = new System.Drawing.Size(598, 540);
             ((System.ComponentModel.ISupportInitialize)(this.productCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceProductBox)).EndInit();
             this.ResumeLayout(false);
